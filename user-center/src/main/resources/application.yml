@@ -1,0 +1,48 @@
+
+spring:
+  redis:
+    # host: 192.168.150.128
+    host: 192.168.157.128
+    port: 6379
+    database: 0
+    timeout: 2000ms
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 800ms
+        max-idle: 8
+        min-idle: 2
+  application:
+    name: ancient-poetry-user-core
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ancient_article?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    initial-size: 5
+    min-idle: 5
+    max-active: 50
+    max-wait: 60000
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: true
+    max-open-prepared-statements: 20
+    validation-query: select 'x'
+    pool-prepared-statements: true
+    min-evictable-idle-time-millis: 300000
+    time-between-eviction-runs-millis: 60000
+
+mybatis:
+  type-aliases-package: com.moon.ancientpoetry.common.po
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+server:
+  port: 8080
