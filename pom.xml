@@ -4,22 +4,24 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>infrastructure</module>
+        <module>infrastructure-base</module>
     </modules>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+
     <groupId>com.moon</groupId>
-    <artifactId>infrastructure-test</artifactId>
+    <artifactId>infrastructure</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>infrastructure-test</name>
+    <name>infrastructure</name>
+
     <description>基础组件包</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <child.version>1.0.0</child.version>
+        <common-lang3.version>3.9</common-lang3.version>
+        <fastjson.version>1.2.60</fastjson.version>
+        <log4j-api.version>2.9.1</log4j-api.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <lombok.version>1.18.8</lombok.version>
     </properties>
     
     <dependencyManagement>
@@ -27,9 +29,59 @@
             <dependency>
                 <groupId>com.moon</groupId>
                 <artifactId>infrastructure</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${child.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${common-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>reflectasm</artifactId>
+                <version>1.11.9</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>2.0.1.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
