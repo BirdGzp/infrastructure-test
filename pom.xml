@@ -5,6 +5,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>infrastructure-base</module>
+        <module>infrastructure-core</module>
+        <module>infrastructure-nosql</module>
     </modules>
 
     <groupId>com.moon</groupId>
@@ -16,21 +18,38 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <child.version>1.0.0</child.version>
+        <child.version>1.0.0-SNAPSHOT</child.version>
         <common-lang3.version>3.9</common-lang3.version>
         <fastjson.version>1.2.60</fastjson.version>
-        <log4j-api.version>2.9.1</log4j-api.version>
+        <log4j.version>2.11.1</log4j.version>
         <commons-codec.version>1.9</commons-codec.version>
         <lombok.version>1.18.8</lombok.version>
+        <spring.version>4.3.13.RELEASE</spring.version>
+        <aspectjrt.version>1.8.5</aspectjrt.version>
+        <jedis.version>2.9.0</jedis.version>
+        <redission.version>2.10.0</redission.version>
+        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <gson.version>2.7</gson.version>
     </properties>
     
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.moon</groupId>
-                <artifactId>infrastructure</artifactId>
+                <artifactId>infrastructure-base</artifactId>
                 <version>${child.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.moon</groupId>
+                <artifactId>infrastructure-core</artifactId>
+                <version>${child.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.moon</groupId>
+                <artifactId>infrastructure-nosql</artifactId>
+                <version>${child.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -47,11 +66,18 @@
                 <artifactId>reflectasm</artifactId>
                 <version>1.11.9</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
@@ -65,8 +91,79 @@
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
-                <version>${log4j-api.version}</version>
+                <version>${log4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <!-- spring  jar     开始-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectjrt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjrt.version}</version>
+            </dependency>
+            <!-- spring  jar     结束-->
+
+            <!--缓存相关 jar     开始-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redission.version}</version>
+            </dependency>
+            <!--缓存相关 jar   结束-->
         </dependencies>
     </dependencyManagement>
 
