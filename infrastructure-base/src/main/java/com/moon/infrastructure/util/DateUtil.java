@@ -745,4 +745,67 @@ public class DateUtil
 		return map;
 	}
 
+	/**
+	 * 获得时间线上更大的时间
+	 * 1999 和 2000 得到 2000
+	 * @param timestamp
+	 * @param timestamp2
+	 * @return
+	 */
+	public static Timestamp getBiggerTime(Timestamp timestamp, Timestamp timestamp2)
+	{
+		Timestamp timestampResult = getNotNullTime(timestamp, timestamp2);
+		if(timestampResult != null)
+		{
+			return timestampResult;
+		}
+		if (timestamp.compareTo(timestamp2) > 0)
+		{
+			return timestamp2;
+		}
+		return timestamp;
+	}
+
+	/**
+	 * 获得过去 相对更近的时间
+	 * 1999 和 2000 得到2000
+	 * @param timestamp
+	 * @param timestamp2
+	 * @return
+	 */
+	public static Timestamp getSmallerTime(Timestamp timestamp, Timestamp timestamp2)
+	{Timestamp timestampResult = getNotNullTime(timestamp, timestamp2);
+		if(timestampResult != null)
+		{
+			return timestampResult;
+		}
+		if (timestamp.compareTo(timestamp2) < 0)
+		{
+			return timestamp2;
+		}
+		return timestamp;
+	}
+
+	/**
+	 * 获得两个时间中非 Null 的一个
+	 * @param timestamp
+	 * @param timestamp2
+	 * @return
+	 */
+	public static Timestamp getNotNullTime(Timestamp timestamp, Timestamp timestamp2)
+	{
+		if (timestamp == null && timestamp2 == null)
+		{
+			return null;
+		}
+		if (timestamp == null)
+		{
+			return timestamp2;
+		}
+		else if (timestamp2 == null)
+		{
+			return timestamp;
+		}
+		return null;
+	}
 }
