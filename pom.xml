@@ -24,7 +24,7 @@
         <log4j.version>2.11.1</log4j.version>
         <commons-codec.version>1.9</commons-codec.version>
         <lombok.version>1.18.8</lombok.version>
-        <spring.version>4.3.13.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <aspectjrt.version>1.8.5</aspectjrt.version>
         <jedis.version>2.9.0</jedis.version>
         <redission.version>2.10.0</redission.version>
